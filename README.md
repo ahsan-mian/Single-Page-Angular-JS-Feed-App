@@ -1,1 +1,1 @@
-# showcased-movie-app
+# Showcased Movies App
