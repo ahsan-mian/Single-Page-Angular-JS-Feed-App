@@ -1,1 +1,1 @@
-# Single-Page-Angular-JS-Feed-App
+# showcased-movie-app
