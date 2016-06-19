@@ -1,0 +1,74 @@
+<div class="feed-container">
+
+	<!-- explain about the detail view -->
+	<div class="feed-detail-meta-text">Movies Feed</div>
+
+	<!-- list to display the movies data -->
+  <div class="feed-item" ng-repeat="movie in feedPageViewData.showcasedMoviesData | limitTo:feedPageViewData.showFeedItemLimit">
+    <div class="feed-item-details">
+
+      <div class="movie-name">
+        <span ng-bind="movie.headline"></span>
+      </div>
+
+      <div class="movie-cover">
+        <img ng-src="{{movie.keyArtImages[0].url}}"></img>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-directors">Directors:&nbsp;</span><span ng-repeat="director in movie.directors"><span ng-bind="director.name"></span><span ng-if="!$last">&#44;&nbsp;</span></span><span ng-if="!movie.directors || movie.directors.length === 0" ng-bind="'' | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-cert">Cert:&nbsp;</span><span ng-bind="movie.cert | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-class">Class:&nbsp;</span><span ng-bind="movie.class | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-rating">Rating:&nbsp;</span><span ng-bind="movie.rating | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-genres">Genres:&nbsp;</span><span ng-repeat="genre in movie.genres"><span ng-bind="genre"></span><span ng-if="!$last">&#44;&nbsp;</span></span><span ng-if="!movie.genres || movie.genres.length === 0" ng-bind="'' | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-duration">Duration:&nbsp;</span><span ng-bind="movie.duration | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-year">Year:&nbsp;</span><span ng-bind="movie.year | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-synopsis">Synopsis:&nbsp;</span><span ng-bind="movie.synopsis | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-body">Body:&nbsp;</span><span ng-bind="movie.body | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-review-author">Review Author:&nbsp;</span><span ng-bind="movie.reviewAuthor | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-quote">Quote:&nbsp;</span><span ng-bind="movie.quote | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-cast">Cast:&nbsp;</span><span ng-repeat="cast in movie.cast"><span ng-bind="cast.name"></span><span ng-if="!$last">&#44;&nbsp;</span></span><span ng-if="!movie.cast || movie.cast.length === 0" ng-bind="'' | checkIfValueExists"></span>
+      </div>
+
+      <div class="movie-detail-item">
+        <span class="movie-trailer">Video Trailer:&nbsp;</span><span ng-repeat="video in movie.videos | limitTo:feedPageViewData.videoTrailerShowLimit"><span ng-repeat="altr in video.alternatives"><span ng-bind-html="altr.url | generateVideoLinkWithQuality:altr.quality"></span><span ng-if="!$last">&#44;&nbsp;</span></span></span><span ng-if="!movie.videos || movie.videos.length === 0 || !movie.videos[0].alternatives" ng-bind="'' | checkIfValueExists"></span>
+      </div>
+
+      <img class="movie-card" ng-src="{{movie.cardImages[0].url}}"></img>
+    </div>
+  </div>
+
+</div>
